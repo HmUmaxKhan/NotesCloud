@@ -4,9 +4,9 @@ const connectToDb = require('./db');
 connectToDb();
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.use('aut/api',require('/routes/auth'));
+app.use('/api/auth',require('./routers/auth'));
 
 app.get('/',(req, res) => {
     res.send('Welcome');
