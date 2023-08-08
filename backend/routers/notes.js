@@ -32,6 +32,7 @@ async (req,res)=>{
       return res.status(400).json({ errors: errors.array() });
     }
 
+    /* The code inside the `try` block is responsible for adding a new note to the database. */
     try{
     const {title,description,tag}=req.body
     
@@ -40,11 +41,74 @@ async (req,res)=>{
     added.save();
     res.json(added);
     }
+
     catch (err) {
         res.status(500).json({ err: err.message });
         console.log(err);
-      }
+    }
 })
 
+// Route 3 for Updating notes
+
+router.put('/updatenote/:id',fetchUser,
+async(req, res) => {
+    const {title, description,tag} = req.body;
+
+    try {
+
+    let newNote={};
+
+    if(title){newNote.title = title};
+    if(description){newNote.description = description};
+    if(tag){newNote.tag = tag};
+
+    let data = await Note.findById(req.params.id);
+    
+    if(!data)
+    {
+        return res.status(404).json({message:"  Note Not Found "});
+    }
+
+    if(data.user.toString()!== req.user.id)
+    {
+        res.status(404).json({message:"You don't have permission to update this note"});
+    }
+
+    let updateNote = await Note.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true});
+    res.json(updateNote);
+        
+    }catch (err) {
+        res.status(500).json({ err: err.message });
+        console.log(err);
+    }
+})
+
+// Route 3 for Updating notes
+
+router.delete('/deletenote/:id',fetchUser,
+async(req, res) => {
+   
+ try {
+
+    let data = await Note.findById(req.params.id);
+    
+    if(!data)
+    {
+        return res.status(404).json({message:"Note Not Found"});
+    }
+
+    if(data.user.toString()!== req.user.id)
+    {
+        res.status(404).json({message:"You don't have permission to update this note"});
+    }
+
+    let deletenote = await Note.findByIdAndDelete(req.params.id)
+    res.json("Successfully Deleted Note");
+        
+    } catch (err) {
+        res.status(500).json({ err: err.message });
+        console.log(err);
+    }
+})
 
 module.exports = router;
