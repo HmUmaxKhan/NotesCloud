@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import NoteContext from "./NoteContext";
 
 
 const NoteState = (props) => {
   const [note, setNotes] = useState([]);
   //const [refresh,setRefresh] = useState(0);
-
-  
+ 
+  let refOpen = useRef(null);
+  let edit = ()=>{
+    refOpen.current.click();
+  }
 
   const showNotes = async () => {
     const url = "http://localhost:5000/api/notes/checkingnotes";
@@ -26,7 +29,7 @@ const NoteState = (props) => {
 
   // Adding a new note
 
-  const AddFunc= async(title,description,tag)=>{
+  const AddFunc= async(title,description,tag,newNote)=>{
     const url = "http://localhost:5000/api/notes/addnotes"
     let response  = await fetch(url,{
         method: "POST",
@@ -39,6 +42,11 @@ const NoteState = (props) => {
     })
     let data = response.json();
     console.log(data);
+    let newAdd = [...note,newNote]; 
+    setNotes(newAdd);
+    console.log(note);
+    console.log(newAdd);
+
 }
 
   //Update Note
@@ -82,7 +90,7 @@ const NoteState = (props) => {
 }
 
   return (
-    <NoteContext.Provider value={{ note, showNotes,DeleteFunc, AddFunc}}>
+    <NoteContext.Provider value={{ edit,refOpen,note, showNotes,DeleteFunc, AddFunc}}>
       {props.children}
     </NoteContext.Provider>
   );

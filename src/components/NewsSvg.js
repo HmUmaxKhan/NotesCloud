@@ -4,7 +4,7 @@ import NoteContext from "../context/notes/NoteContext";
 function NewsSvg(props) {
     // const refresh = useRefresh();
     let context = useContext(NoteContext);
-    const  {DeleteFunc} = context;
+    const  {DeleteFunc, edit} = context;
 
 
     const handleDelete = (e)=>{
@@ -15,7 +15,7 @@ function NewsSvg(props) {
   return (
     <div>
       <div className="container">
-        <button type="submit" className="btn btn-none">
+        <button type="submit" className="btn btn-none" onClick={()=>edit()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"

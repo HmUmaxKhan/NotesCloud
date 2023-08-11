@@ -1,6 +1,6 @@
 import React from "react";
 import NewsSvg from "./NewsSvg";
-import NoteState from "../context/notes/NoteState";
+
 
 
 function NoteItems(props) {
@@ -11,11 +11,9 @@ function NoteItems(props) {
         <div className="card-body">
           <h5 className="card-title">
               {props.title}
-              <NoteState>
               
               <NewsSvg id = {props.id} />
-        
-              </NoteState>
+    
 
           </h5>
           <p className="card-text">
