@@ -81,7 +81,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    
+    let success=false;
     try {
         
         /* `const {email,password} = (req.body);` is using object destructuring to extract the `email`
@@ -91,14 +91,14 @@ router.post(
         /* This code is checking if a user with the specified email exists in the database. */
         let user = await User.findOne({email});
         if (!user) {
-            return res.status(404).json({ERROR:"User does not exists with this email"});
+            return res.status(404).json({success,ERROR:"User does not exists with this email"});
         }
 
         /* The code `const passwordCompare = bcrypt.compare(password, user.password);` is comparing the
         provided password with the hashed password stored in the database for the user. */
         const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare){
-        return res.status(404).json({ERROR:"Enter the correct password"});
+        return res.status(404).json({success,ERROR:"Enter the correct password"});
         }
 
         /* This code is generating a JSON Web Token (JWT) for the authenticated user. */
@@ -112,7 +112,7 @@ router.post(
     
           res
             .status(200)
-            .json({ Info: "User is Authenticated Successfully", authtoken: jwtData });
+            .json({ success,Info: "User is Authenticated Successfully", authtoken: jwtData });
 
         } catch (err) {
             res.status(500).json({ err: err.message });

@@ -63,13 +63,19 @@ const NoteState = (props) => {
 
     // Logic  To Change Data in client side
 
-    for (let element of note){
+
+    let newArray = JSON.parse(JSON.stringify(note));
+    
+    for (let element of newArray) {
       if(element._id ===id){
         element.title = title;
         element.description = description;
         element.tag = tag;
+        break;
       }
     }
+    console.log(newArray);
+    setNotes(newArray);
 }
 
 
