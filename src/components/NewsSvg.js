@@ -15,7 +15,7 @@ function NewsSvg(props) {
   return (
     <div>
       <div className="container">
-        <button type="submit" className="btn btn-none" onClick={()=>edit()}>
+        <button type="submit" className="btn btn-none" onClick={()=>props.update(props.note)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"

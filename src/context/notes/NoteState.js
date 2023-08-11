@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState } from "react";
 import NoteContext from "./NoteContext";
 
 
@@ -6,10 +6,6 @@ const NoteState = (props) => {
   const [note, setNotes] = useState([]);
   //const [refresh,setRefresh] = useState(0);
  
-  let refOpen = useRef(null);
-  let edit = ()=>{
-    refOpen.current.click();
-  }
 
   const showNotes = async () => {
     const url = "http://localhost:5000/api/notes/checkingnotes";
@@ -51,10 +47,10 @@ const NoteState = (props) => {
 
   //Update Note
 
-  const UpdateFunc= async(id,title,description,tag)=>{
-    const url = `http://localhost:5000/api/notes/updatenote${id}`
+  const UpdateFunc= async(title,description,tag,id)=>{
+    const url = `http://localhost:5000/api/notes/updatenote/${id}`
     let response  = await fetch(url,{
-        method: "POST",
+        method: "PUT",
         headers:{
             "content-type": "application/json",
             "auth-token":
@@ -64,6 +60,16 @@ const NoteState = (props) => {
     })
     let data = response.json();
     console.log(data);
+
+    // Logic  To Change Data in client side
+
+    for (let element of note){
+      if(element._id ===id){
+        element.title = title;
+        element.description = description;
+        element.tag = tag;
+      }
+    }
 }
 
 
@@ -90,7 +96,7 @@ const NoteState = (props) => {
 }
 
   return (
-    <NoteContext.Provider value={{ edit,refOpen,note, showNotes,DeleteFunc, AddFunc}}>
+    <NoteContext.Provider value={{ UpdateFunc,note, showNotes,DeleteFunc, AddFunc}}>
       {props.children}
     </NoteContext.Provider>
   );
