@@ -4,11 +4,12 @@ import NoteContext from "../context/notes/NoteContext";
 function NewsSvg(props) {
     // const refresh = useRefresh();
     let context = useContext(NoteContext);
-    const  {DeleteFunc, edit} = context;
+    const  {DeleteFunc} = context;
 
 
     const handleDelete = (e)=>{
         e.preventDefault();
+        props.showAlert("Note has been deleted","success")
         DeleteFunc(props.id)
     }
     

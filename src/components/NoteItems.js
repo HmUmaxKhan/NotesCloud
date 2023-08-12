@@ -4,16 +4,17 @@ import NewsSvg from "./NewsSvg";
 
 
 function NoteItems(props) {
-  const {note,update} = props;
+  const {note,update,showAlert} = props;
     
   return (
       <div>
+      
       <div className="card text-center">
         <div className="card-body">
           <h5 className="card-title">
               {note.title}
               
-              <NewsSvg id = {note._id} update={update} note={note} />
+              <NewsSvg id = {note._id} showAlert={showAlert} update={update} note={note} />
     
 
           </h5>
@@ -26,6 +27,7 @@ function NoteItems(props) {
           </div>
         </div>
       </div>
+      
   );
 }
 

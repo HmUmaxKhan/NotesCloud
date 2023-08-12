@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login(props) {
 
-    const navigate = useNavigate();
+  let navigate = useNavigate();  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,9 +20,11 @@ function Login() {
 
     if(result.success){
        localStorage.setItem("token", result.authtoken);
+    
+     props.showAlert("Successfully Logged In","success")
      navigate("/");
     }else{
-        alert("Please login with correct incredentials");
+        props.showAlert("Please enter correct credentials","danger");
     }
   };
 
@@ -34,6 +36,8 @@ function Login() {
 
   return (
     <div className="container my-4">
+    <div className="container text-center my-5"><h2>Login</h2></div>
+    <div className="container" style={{border:"solid black 1px", borderRadius:"25px", height:"20rem", boxShadow: "5px 10px #888888"}}>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -67,6 +71,7 @@ function Login() {
           Submit
         </button>
       </form>
+      </div>
     </div>
   );
 }

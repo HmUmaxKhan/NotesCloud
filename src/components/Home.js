@@ -3,7 +3,7 @@ import Notes from './Notes'
 import AddNote from './AddNote'
 
 
-function Home() {
+function Home(props) {
 
   let width=
   {   
@@ -15,8 +15,8 @@ function Home() {
   
   return(
     <div>
-      <AddNote istyle={width}/>
-      <Notes istyle={width}/>
+      <AddNote showAlert={props.showAlert} istyle={width}/>
+      <Notes showAlert={props.showAlert} istyle={width}/>
     </div>
   )
 }
