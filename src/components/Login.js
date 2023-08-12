@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+
+    const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     let res = await fetch("http://localhost:5000/api/auth/login", {
       method: "POST",
       headers:{
@@ -16,7 +20,9 @@ function Login() {
 
     if(result.success){
        localStorage.setItem("token", result.authtoken);
-
+     navigate("/");
+    }else{
+        alert("Please login with correct incredentials");
     }
   };
 
