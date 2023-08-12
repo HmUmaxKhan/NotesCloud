@@ -56,10 +56,10 @@ the POST route. */
       };
 
       const jwtData = jwt.sign(data, jwt_secret);
-
+         let sucess = true;
       res
         .status(200)
-        .json({ Info: "User is created successfully", authtoken: jwtData });
+        .json({ sucess,Info: "User is created successfully", authtoken: jwtData });
     } catch (err) {
       res.status(500).json({ err: err.message });
       console.log(err);
