@@ -32,7 +32,7 @@ const NoteState = (props) => {
             "content-type": "application/json",
             "auth-token":localStorage.getItem("token"),
         },
-        body: JSON.stringify({title,description,tag})
+        body: JSON.stringify({title,description,tag,date:Date.now()})
     })
     let data = response.json();
     console.log(data);
@@ -53,7 +53,7 @@ const NoteState = (props) => {
             "content-type": "application/json",
             "auth-token":localStorage.getItem("token")
         },
-        body: JSON.stringify({title,description,tag})
+        body: JSON.stringify({title,description,tag,date:Date.now()})
     })
     let data = response.json();
     console.log(data);

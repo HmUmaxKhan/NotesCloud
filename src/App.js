@@ -7,6 +7,7 @@ import NoteState from "./context/notes/NoteState";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Alert from "./components/Alert";
+import "./App.css"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     }, 5000);
 
   return (
+    <div className="imgBg">
     <NoteState>
       <Router>
         <Navbar />
@@ -37,6 +39,7 @@ function App() {
         </div>
       </Router>
     </NoteState>
+    </div>
   );
 }
 

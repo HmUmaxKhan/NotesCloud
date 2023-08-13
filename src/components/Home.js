@@ -15,7 +15,7 @@ function Home(props) {
   
   return(
     <div>
-      <AddNote showAlert={props.showAlert} istyle={width}/>
+      <AddNote showAlert={props.showAlert} istyle={width} style={{style:"none"}}/>
       <Notes showAlert={props.showAlert} istyle={width}/>
     </div>
   )

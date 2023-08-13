@@ -4,6 +4,7 @@ import NoteItems from "./NoteItems";
 import { useNavigate } from "react-router-dom";
 
 function Notes(props) {
+  
   let context = useContext(NoteContext);
   const { note, showNotes, UpdateFunc } = context;
   let refOpen = useRef(null);
@@ -142,7 +143,7 @@ function Notes(props) {
         </div>
       </div>
       <hr />
-      <div className="text-center mt-5 my-3">
+      <div className="text-center mt-5 my-3 text-bg-light" style={{marginLeft:"27rem",marginRight:"27rem",borderRadius:"20px",border:"solid 3px green"}}>
         <h2>
           {note.length === 0 ? "No Notes are Here to show" : "Your Notes"}
         </h2>
@@ -156,12 +157,12 @@ function Notes(props) {
           {note &&
             note.map((note, index) => {
               return (
-                <div className="col-md-4 my-3" key={index}>
+                <div className="col-sm-4 my-3" key={index}>
                   <div
                     style={{
                       border: "solid black 1px",
                       borderRadius: "10px",
-                      boxShadow: "5px 10px #888888",
+                      boxShadow: "5px 10px green",
                     }}
                   >
                     <NoteItems note={note} update={update} showAlert={props.showAlert} />

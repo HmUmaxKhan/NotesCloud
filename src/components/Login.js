@@ -35,6 +35,7 @@ function Login(props) {
   };
 
   return (
+    <div style={{height:"80vh"}}>
     <div className="container my-4">
     <div className="container text-center my-5"><h2>Login</h2></div>
     <div className="container" style={{border:"solid black 1px", borderRadius:"25px", height:"20rem", boxShadow: "5px 10px #888888"}}>
@@ -72,6 +73,7 @@ function Login(props) {
         </button>
       </form>
       </div>
+    </div>
     </div>
   );
 }
