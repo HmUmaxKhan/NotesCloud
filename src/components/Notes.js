@@ -142,8 +142,7 @@ function Notes(props) {
           </div>
         </div>
       </div>
-      <hr />
-      <div className="text-center mt-5 my-3 text-bg-light" style={{marginLeft:"27rem",marginRight:"27rem",borderRadius:"20px",border:"solid 3px green"}}>
+      <div className="text-center my-3 text-bg-light" style={{margin:"40% 10% 0 10%",borderRadius:"20px",border:"solid 3px green"}}>
         <h2>
           {note.length === 0 ? "No Notes are Here to show" : "Your Notes"}
         </h2>

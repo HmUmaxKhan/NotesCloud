@@ -37,8 +37,12 @@ function Login(props) {
   return (
     <div style={{height:"80vh"}}>
     <div className="container my-4">
-    <div className="container text-center my-5"><h2>Login</h2></div>
-    <div className="container" style={{border:"solid black 1px", borderRadius:"25px", height:"20rem", boxShadow: "5px 10px #888888"}}>
+    <div className="container text-center my-5">
+    <div className="text-center mt-5 my-3 text-bg-light" style={{marginLeft:"30%",marginRight:"30%",borderRadius:"20px",border:"solid 3px green"}}>
+    <h2>Login</h2>
+    </div>
+    </div>
+    <div className="container bg-light pt-3" style={{border:"solid black 1px", borderRadius:"25px", height:"20rem", boxShadow: "5px 10px green"}}>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

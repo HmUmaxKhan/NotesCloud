@@ -37,9 +37,17 @@ function Signup(props) {
   };
 
   return (
+    <div style={{height:"80vh"}}>
     <div className="container my-4">
+    <div className="container text-center my-5">
+    <div className="text-center mt-3 my-3 text-bg-light" style={{marginLeft:"30%",marginRight:"30%",borderRadius:"20px",border:"solid 3px green"}}>
+    <h2>SignUp</h2>
+    </div>
+    </div>
+    <div className="container bg-light pt-3" style={{paddingBottom:"21rem",border:"solid black 1px", borderRadius:"25px", height:"20rem", boxShadow: "5px 10px green"}}>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+
+      <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Full Name
           </label>
@@ -51,7 +59,7 @@ function Signup(props) {
             onChange={handleChange}
             aria-describedby="emailHelp"
           />
-        </div>
+          </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
@@ -64,6 +72,9 @@ function Signup(props) {
             onChange={handleChange}
             aria-describedby="emailHelp"
           />
+          <div id="emailHelp" className="form-text">
+            We'll never share your email with anyone else.
+          </div>
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
@@ -75,14 +86,16 @@ function Signup(props) {
             id="password"
             name="password"
             onChange={handleChange}
-            minLength={5}
-            required={true}
           />
         </div>
+        <div className="d-flex justify-content-center">
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+        </div>
       </form>
+      </div>
+    </div>
     </div>
   );
 }
